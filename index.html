@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <style>
+            body {
+                background-image: url('fondo.jpg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Interpolación de Lagrange</h1>
+            <div id="inputPoints" class="form-group">
+                <label>Puntos (x, y): </label>
+                <div class="input-row">
+                    <input class="form-control" placeholder="x">
+                    <input class="form-control" placeholder="y">
+                </div>
+            </div>
+            <button onclick="addInputRow()" class="btn btn-primary">Agregar punto</button>
+            <button onclick="calculate()" class="btn btn-success">Calcular</button>
+            <label>Resultado aproximado:</label>
+            <p id="result"></p>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
