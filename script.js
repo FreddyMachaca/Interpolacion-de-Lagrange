@@ -78,4 +78,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
         return yi;
     }
+
+    // Preloading de imágenes
+    const backgroundImages = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
+    const imagePromises = [];
+    const body = document.querySelector('body');
+
+    backgroundImages.forEach(image => {
+        const imageUrl = `Img/${image}`;
+        const imagePromise = new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = imageUrl;
+        });
+        imagePromises.push(imagePromise);
+    });
+
+    let currentImageIndex = 0;
+
+    Promise.all(imagePromises)
+        .then(() => {
+            setInterval(() => {
+                currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+                const imageUrl = `Img/${backgroundImages[currentImageIndex]}`;
+                body.style.backgroundImage = `url('${imageUrl}')`;
+            }, 2000);
+        })
+        .catch(error => {
+            console.error('Error al cargar las imágenes:', error);
+        });
 });
